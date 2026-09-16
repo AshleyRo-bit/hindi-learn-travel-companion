@@ -1,5 +1,5 @@
 import * as Device from 'expo-device';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedIcon } from '@/components/animated-icon';
@@ -8,7 +8,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import { Link } from '../../.expo/types/router';
+import { Link } from 'expo-router';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -45,13 +45,10 @@ export default function HomeScreen() {
  <View style={styles.container}>
 
       <Link href="/camera">
-
-        <Text>
-
-          Open Camera
-
-        </Text>
-
+      <ThemedText>
+  Open Camera
+      </ThemedText>
+        
       </Link>
 
     </View>

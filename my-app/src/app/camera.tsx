@@ -1,8 +1,20 @@
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import { useRef } from 'react';
 
 export default function CameraScreen() {
   const [permission, requestPermission] = useCameraPermissions();
+  const cameraRef = useRef<CameraView>(null);
+
+  const takePhoto = async () => {
+  if (!cameraRef.current) {
+    return;
+  }
+
+  const photo = await cameraRef.current.takePictureAsync();
+
+  console.log(photo);
+};
 
   if (!permission) {
     return <View />;
@@ -26,9 +38,15 @@ export default function CameraScreen() {
   return (
     <View style={styles.container}>
       <CameraView
+      ref={cameraRef}
         style={styles.camera}
         facing="back"
       />
+      <Button
+  title="Take Photo"
+  onPress={takePhoto}
+/>
+
     </View>
   );
 }
