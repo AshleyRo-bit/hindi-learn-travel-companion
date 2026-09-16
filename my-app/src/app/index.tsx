@@ -1,5 +1,5 @@
 import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedIcon } from '@/components/animated-icon';
@@ -8,6 +8,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { Link } from '../../.expo/types/router';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -34,15 +35,26 @@ export default function HomeScreen() {
       <SafeAreaView style={styles.safeArea}>
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            I love Mannu
-          </ThemedText>
-        </ThemedView>
+              </ThemedView>
 
         <ThemedText type="code" style={styles.code}>
           get started
         </ThemedText>
 
+
+ <View style={styles.container}>
+
+      <Link href="/camera">
+
+        <Text>
+
+          Open Camera
+
+        </Text>
+
+      </Link>
+
+    </View>
         <ThemedView type="backgroundElement" style={styles.stepContainer}>
           <HintRow
             title="Try editing"
